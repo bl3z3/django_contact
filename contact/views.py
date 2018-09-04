@@ -1,5 +1,6 @@
 from contact.forms import ContactForm
 from django.template.loader import get_template
+from django.contrib import messages
 from django.core.mail import EmailMessage
 from django.template import Context
 from django.shortcuts import render,redirect
@@ -33,6 +34,7 @@ def contact(request):
 				headers = {'Reply-To': contact_email }
 			)
 			email.send()
+			messages.add_message(request, messages.SUCCESS, 'E-mail sent')
 			return redirect('contact')
 
 	return render(request, 'contact.html', {
