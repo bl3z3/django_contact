@@ -35,7 +35,7 @@ def contact(request):
 			)
 			email.send()
 			messages.add_message(request, messages.SUCCESS, 'E-mail sent')
-			return redirect('contact')
+			return redirect('/')
 
 	return render(request, 'contact.html', {
 		'form': form_class,
